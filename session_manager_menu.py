@@ -13,19 +13,21 @@ def load_sessions():
 def build_applescript(s):
     cmd = f'ssh -i "{s.get("identityFile","")}" {s["user"]}@{s["host"]}'
     if s.get("launchMode","newWindow") == "newWindow":
-        return f"""tell application "iTerm2"
+        return f"""
+tell application "iTerm2"
   create window with default profile
   tell current session of current window to write text "{cmd}"
 end tell
-"""
+""".strip()
     else:
-        return f"""tell application "iTerm2"
+        return f"""
+tell application "iTerm2"
   tell current window
     create tab with default profile
     tell current session to write text "{cmd}"
   end tell
 end tell
-"""
+""".strip()
 
 async def run(connection):
     sessions = load_sessions()

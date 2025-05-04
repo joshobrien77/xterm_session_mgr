@@ -1,5 +1,5 @@
 def build_applescript(sess):
-    """Generate the AppleScript to SSH into a session dict."""
+    """Generate the AppleScript to SSH into a session dict.""""
     cmd = f'ssh -i "{sess.get("identityFile","")}" {sess["user"]}@{sess["host"]}'
     if sess.get("launchMode","newWindow") == "newWindow":
         return f"""
