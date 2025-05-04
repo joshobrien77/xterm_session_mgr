@@ -1,7 +1,13 @@
 # config.py
+
+"""
+Module for loading iTerm2 session definitions from a JSON file.
+Defines the Session dataclass and a loader function.
+"""
+
+import json
 from dataclasses import dataclass
 from typing import List, Optional
-import json
 
 @dataclass
 class Session:
@@ -17,15 +23,19 @@ class Session:
 def load_sessions(path: str) -> List[Session]:
     """
     Load a list of Session objects from a JSON file at `path`.
-    Expects an array of objects with keys:
-      - id (str)
-      - name (str)
-      - host (str)
-      - port (int, optional, defaults to 22)
-      - user (str)
-      - identityFile (str, optional)
-      - launchMode (str: 'newWindow'|'newTab'|'splitPane')
-      - passwordKey (str, optional)
+
+    The JSON file should contain an array of objects with keys:
+      - id           (str)   : unique identifier
+      - name         (str)   : display name
+      - host         (str)   : hostname or IP
+      - port         (int)   : SSH port (defaults to 22 if omitted)
+      - user         (str)   : SSH username
+      - identityFile (str)   : path to private key file (optional)
+      - launchMode   (str)   : "newWindow", "newTab", or "splitPane"
+      - passwordKey  (str)   : Keychain key for stored password (optional)
+
+    Returns:
+        List[Session]: a list of Session instances.
     """
     with open(path, 'r') as f:
         raw = json.load(f)
