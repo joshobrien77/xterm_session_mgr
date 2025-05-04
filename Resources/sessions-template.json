@@ -1,0 +1,16 @@
+[
+  {
+    "name": "Prod Web",
+    "host": "web01.example.com",
+    "user": "deploy",
+    "identityFile": "~/.ssh/id_rsa",
+    "launchMode": "newTab"
+  },
+  {
+    "name": "Staging DB",
+    "host": "db.staging.example.com",
+    "user": "dba",
+    "identityFile": "",
+    "launchMode": "newWindow"
+  }
+]
