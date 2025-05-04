@@ -1,0 +1,4 @@
+Name,Host,User,IdentityFile,LaunchMode
+# Example
+Prod Web,web01.example.com,deploy,~/.ssh/id_rsa,newTab
+Staging DB,db.staging.example.com,dba,,newWindow

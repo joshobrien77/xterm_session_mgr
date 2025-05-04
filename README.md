@@ -1,19 +1,31 @@
-# iTerm2 Session Manager (Menu-Only)
+# xterm_session_mgr
 
 A self-contained, menu-only session manager for iTerm2 3.5.x (GA).  
 Reads session definitions from `~/.iterm2_sessions.json` and registers one menu item per session under **Scripts → session_manager_menu**.
 
-## Files
+## Repository Structure
 
-- **session_manager_menu.py**: Entry-point Python script to import into iTerm2.
-- **config.py**: Helper module for loading the JSON sessions file.
-- **applescript.py**: Helper module to generate AppleScript for SSH launch.
-- **sessions-template.csv**: CSV template for bulk session import (optional).
-- **tests/**: Pytest tests for `config.py` and `applescript.py`.
+```
+xterm_session_mgr/
+├── LICENSE
+├── README.md
+├── .gitignore
+├── sessions-template.csv
+├── session_manager_menu.py
+├── config.py
+├── applescript.py
+└── tests/
+    ├── test_config.py
+    └── test_applescript.py
+```
 
 ## Installation
 
-1. Clone or download this repo.  
+1. Clone or download this repo:  
+   ```bash
+   git clone https://github.com/yourorg/xterm_session_mgr.git
+   cd xterm_session_mgr
+   ```
 2. Ensure your JSON session file exists at `~/.iterm2_sessions.json`.  
 3. In iTerm2: **Scripts → Manage → Import Python Script…** and select `session_manager_menu.py`.  
 4. Restart iTerm2 (⌘Q → reopen).  
