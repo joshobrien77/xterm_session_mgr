@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-# session_manager.py
+import os, sys
 
-import asyncio
+# 1) Tell Python where to find your helper modules
+REPO = os.path.expanduser("~/Documents/GitHub/xterm_session_mgr")
+if REPO not in sys.path:
+    sys.path.insert(0, REPO)
+
+# 2) (Now) import your iTerm2 API and helpers
 import iterm2
-import json
-from config import load_sessions, Session
+from config import load_sessions
 from executor import launch_session_via_applescript
+from ui.sidebar import setup_sidebar
 
 # Path to your JSON session file
 SESSION_FILE = os.path.expanduser("~/.iterm2_sessions.json")
